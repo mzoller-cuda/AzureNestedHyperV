@@ -15,6 +15,8 @@ Azure Nested VV Host Configuration
 
 #>
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 Set-ExecutionPolicy Unrestricted -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Find-Module -Includes DscResource -Name xHyper-v | Install-Module -Force

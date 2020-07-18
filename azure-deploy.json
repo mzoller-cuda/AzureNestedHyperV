@@ -4,7 +4,7 @@
   "parameters": {
     "hypervHostDnsName": {
       "type": "string",
-      "defaultValue": "hypervhostupdateme",
+      "defaultValue": "cgwhyperv2016",
       "minLength": 1
     }
   },
