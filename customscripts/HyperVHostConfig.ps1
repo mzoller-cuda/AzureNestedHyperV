@@ -47,20 +47,22 @@ Configuration Main
 		
 			SetScript =
 			{
+				[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 				$NatSwitch = Get-NetAdapter -Name "vEthernet (NAT Switch)"
 				New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $NatSwitch.ifIndex
 				New-NetNat -Name NestedVMNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24 -Verbose
 				$VHDDownload = "https://d.barracuda.com/ngfirewall/8.1.0/GWAY-8.1.0-0440-HyperV-VTxxx.vhd"
 				$downloadedFile = "D:\VTxxx.vhd"
 				$vmFolder = "C:\VM"
-				Invoke-WebRequest $VHDDownload -OutFile $downloadedFile
+				(New-Object System.Net.WebClient).DownloadFile($VHDDownload, $downloadedFile)
+#				Invoke-WebRequest -Uri $VHDDownload -OutFile $downloadedFile
 #				Add-Type -assembly "system.io.compression.filesystem"
 #				[io.compression.zipfile]::ExtractToDirectory($downloadedFile, $vmFolder)
 				New-VM -Name CGWAN `
 					   -MemoryStartupBytes 2GB `
 					   -BootDevice VHD `
 					   -VHDPath 'D:\VTxxx.vhd' `
-                      -Path 'C:\VM\PATH\' `
+                      -Path 'C:\VM\' `
 					   -Generation 1 `
 				       -Switch "NAT Switch"
 			    Start-VM -Name CGWAN
