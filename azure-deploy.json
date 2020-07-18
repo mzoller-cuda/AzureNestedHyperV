@@ -26,7 +26,7 @@
     "HyperVHost-PUBIPName": "[concat(variables('HyperVHostName'), '-PIP')]",
     "HyperVHostConfigArchiveFolder": ".",
     "HyperVHostConfigArchiveFileName": "HyperVHostConfig.zip",
-    "HyperVHostConfigURL": "https://github.com/mzoller-cuda/AzureNestedHyperV/blob/master/customscripts/HyperVHostConfig.zip?raw=true",
+    "HyperVHostConfigURL": "https://github.com/mzoller-cuda/AzureNestedHyperV/blob/master/customscripts/HyperVHostConfig.ps1?raw=true",
     "HyperVHostInstallHyperVScriptFolder": ".",
     "HyperVHostInstallHyperVScriptFileName": "InstallHyperV.ps1",
     "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/mzoller-cuda/AzureNestedHyperV/master/customscripts/InstallHyperV.ps1"
