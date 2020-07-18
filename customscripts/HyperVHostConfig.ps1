@@ -71,7 +71,6 @@ Configuration Main
 					   -VHDPath 'D:\VTxxx.vhd' `
                       -Path 'C:\VM\' `
 					   -Generation 1 `
-#				       -Switch "NAT Switch"
 					   -Switch "P1Switch"
 					   
 				# Add network interfaces 
