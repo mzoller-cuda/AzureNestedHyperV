@@ -50,20 +50,20 @@ Configuration Main
 				$NatSwitch = Get-NetAdapter -Name "vEthernet (NAT Switch)"
 				New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $NatSwitch.ifIndex
 				New-NetNat -Name NestedVMNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24 -Verbose
-#				$zipDownload = "http://YOUR-URL-HERE/FILENAME.ZIP"
-#				$downloadedFile = "D:\FILENAME.zip"
+				$zipDownload = "https://d.barracuda.com/ngfirewall/8.1.0/GWAY-8.1.0-0440-HyperV-VTxxx.vhd"
+				$downloadedFile = "C:\VM\VTxxx.vhd"
 #				$vmFolder = "C:\VM"
 #				Invoke-WebRequest $zipDownload -OutFile $downloadedFile
 #				Add-Type -assembly "system.io.compression.filesystem"
 #				[io.compression.zipfile]::ExtractToDirectory($downloadedFile, $vmFolder)
-#				New-VM -Name VMNAME `
-#					   -MemoryStartupBytes 2GB `
-#					   -BootDevice VHD `
-#					   -VHDPath 'C:\VM\PATH\FILENAME.vhd' `
-#                      -Path 'C:\VM\PATH' `
-#					   -Generation 1 `
-#				       -Switch "NAT Switch"
-#			    Start-VM -Name VMNAME
+				New-VM -Name CGWAN `
+					   -MemoryStartupBytes 2GB `
+					   -BootDevice VHD `
+					   -VHDPath 'C:\VM\VTxxx.vhd' `
+                      -Path 'C:\VM\' `
+					   -Generation 1 `
+				       -Switch "NAT Switch"
+			    Start-VM -Name CGWAN
 			}
 		}	
   	}

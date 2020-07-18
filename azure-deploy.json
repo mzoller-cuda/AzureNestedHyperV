@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "hypervHostDnsName": {
@@ -13,23 +13,23 @@
     "STRGVNETSubnet1Name": "VMHOST",
     "STRGVNETSubnet1Prefix": "10.0.0.0/24",
     "HyperVHostName": "HYPERVHOST",
-    "HyperVHostAdminUserName": "stormtrooperio",
-    "HyperVHostAdminPassword": "Password.1!!",
+    "HyperVHostAdminUserName": "mzoller",
+    "HyperVHostAdminPassword": "Parent9$Marmalade",
     "HyperVHostImagePublisher": "MicrosoftWindowsServer",
     "HyperVHostImageOffer": "WindowsServer",
     "HyperVHostWindowsOSVersion": "2016-Datacenter",
     "HyperVHostOSDiskName": "[concat(variables('HyperVHostName'), '-OSDISK')]",
-    "HyperVHostVmSize": "Standard_D2s_v3",
+    "HyperVHostVmSize": "Standard_D4s_v3",
     "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'STRGVNET')]",
     "HyperVHostSubnetRef": "[concat(variables('HyperVHostVnetID'), '/subnets/', variables('STRGVNETSubnet1Name'))]",
     "HyperVHostNicName": "[concat(variables('HyperVHostName'), '-NIC')]",
     "HyperVHost-PUBIPName": "[concat(variables('HyperVHostName'), '-PIP')]",
     "HyperVHostConfigArchiveFolder": ".",
     "HyperVHostConfigArchiveFileName": "HyperVHostConfig.zip",
-    "HyperVHostConfigURL": "https://github.com/deltadan/AzureNestedHyperV/blob/master/customscripts/HyperVHostConfig.zip?raw=true",
+    "HyperVHostConfigURL": "https://github.com/mzoller-cuda/AzureNestedHyperV/blob/master/customscripts/HyperVHostConfig.zip?raw=true",
     "HyperVHostInstallHyperVScriptFolder": ".",
     "HyperVHostInstallHyperVScriptFileName": "InstallHyperV.ps1",
-    "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/deltadan/AzureNestedHyperV/master/customscripts/InstallHyperV.ps1"
+    "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/mzoller-cuda/AzureNestedHyperV/master/customscripts/InstallHyperV.ps1"
 
   },
   "resources": [
