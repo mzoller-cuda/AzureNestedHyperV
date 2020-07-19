@@ -54,10 +54,10 @@ Configuration Main
 				New-NetNat -Name NestedVMNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24 -Verbose
 				
 				# Create the rest of the switches 
-				New-VMSwitch "P1Switch" -SwitchType "Private" 
-				New-VMSwitch "P2Switch" -SwitchType "Private" 
-				New-VMSwitch "P3Switch" -SwitchType "Private" 
-				New-VMSwitch "P5Switch" -SwitchType "Private" 
+				New-VMSwitch "P1Switch" -SwitchType "Internal" 
+				New-VMSwitch "P2Switch" -SwitchType "Internal" 
+				New-VMSwitch "P3Switch" -SwitchType "Internal" 
+				New-VMSwitch "P5Switch" -SwitchType "Internal" 
 
 				$VHDDownload = "https://d.barracuda.com/ngfirewall/8.1.0/GWAY-8.1.0-0440-HyperV-VTxxx.vhd"
 				$downloadedFile = "D:\VTxxx.vhd"
@@ -66,7 +66,7 @@ Configuration Main
 
 
 				New-VM -Name CGWAN `
-					   -MemoryStartupBytes 2GB `
+					   -MemoryStartupBytes 4GB `
 					   -BootDevice VHD `
 					   -VHDPath 'D:\VTxxx.vhd' `
                       -Path 'C:\VM\' `
@@ -75,9 +75,9 @@ Configuration Main
 					   
 				# Add network interfaces 
 				# note the order of the interfaces (they are jumbled)
-				Add-VMNetworkAdapter -Name "P2" -VMName CGWAN -SwitchName "NAT Switch"
+				Add-VMNetworkAdapter -Name "P2" -VMName CGWAN -SwitchName "P2Switch"
 				Add-VMNetworkAdapter -Name "P3" -VMName CGWAN -SwitchName "P3Switch"
-				Add-VMNetworkAdapter -Name "P4" -VMName CGWAN -SwitchName "P2Switch"
+				Add-VMNetworkAdapter -Name "P4" -VMName CGWAN -SwitchName "NAT Switch"
 				Add-VMNetworkAdapter -Name "P5" -VMName CGWAN -SwitchName "P5Switch"
 
 			    Start-VM -Name CGWAN
